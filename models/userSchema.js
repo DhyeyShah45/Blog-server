@@ -15,7 +15,7 @@ const userSchema = new Schema({
   },
 });
 
-userSchema.statics.signup = async (email, password) => {
+userSchema.statics.signup = async function signup (email, password){
   if (!email || !password) {
     throw Error("All fields must be filled");
   }
@@ -40,7 +40,7 @@ userSchema.statics.signup = async (email, password) => {
   return user;
 };
 
-userSchema.statics.login = async function (email, password) {
+userSchema.statics.login = async function login (email, password) {
   if (!email || !password) {
     throw Error("All fields must be filled");
   }
@@ -58,4 +58,4 @@ userSchema.statics.login = async function (email, password) {
   return user;
 };
 
-module.export = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema);
