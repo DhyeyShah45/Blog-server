@@ -1,7 +1,12 @@
 const Blog = require("../models/blogSchema");
-
 const blog_view_all = (req, response) => {
-  Blog.find()
+  Blog.find({visibilty:"Public"})
+    .then((res) => response.send(res))
+    .catch((err) => console.log(err));
+};
+
+const blog_view_author = (req, response) => {
+  Blog.find({user_id:req.user_id})
     .then((res) => response.send(res))
     .catch((err) => console.log(err));
 };
@@ -15,7 +20,8 @@ const blog_view_one = (req, response) => {
 
 const blog_create = (req, res) => {
   // console.log(req.body);
-  const blog = new Blog(req.body);
+  const data = { ...req.body, user_id: req.user_id, author: req.author };
+  const blog = new Blog(data);
   blog
     .save()
     .then(() => res.send("Blog Created!!"))
@@ -33,4 +39,5 @@ module.exports = {
   blog_delete,
   blog_view_all,
   blog_view_one,
+  blog_view_author,
 };

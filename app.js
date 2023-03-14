@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require('cors')
+// const cors = require('cors')
 const blogRoutes = require('./routes/blogRoutes')
 const userRoutes = require('./routes/userRoutes')
 const mongoose = require("mongoose");
@@ -18,9 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-app.use('/',blogRoutes)
 app.use('/user',userRoutes)
+app.use('/',blogRoutes)
 
 mongoose
   .connect(CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })

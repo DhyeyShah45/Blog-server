@@ -12,10 +12,18 @@ const blogSchema = new Schema({
     type: String,
     required: true
   },
-  author: {
+  visibilty:{
     type: String,
-    required: true,
+    required:true,
   },
+  user_id:{
+    type:String,
+    required:true,
+  },
+  author:{
+    type:String,
+    required:true,
+  }
 }, { timestamps: true });
 
 // Creating a model with the name of collections you want by the rules of Schema
