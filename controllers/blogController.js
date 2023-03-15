@@ -29,7 +29,7 @@ const blog_create = (req, res) => {
 };
 
 const blog_delete = (req, response) => {
-  Blog.findByIdAndDelete(req.params.id)
+  Blog.findOneAndDelete({_id:req.params.id,user_id:req.user_id})
     .then((res) => response.send(res))
     .catch((err) => console.log(err));
 };
