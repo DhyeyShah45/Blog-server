@@ -27,6 +27,15 @@ const blog_create = (req, res) => {
     .then(() => res.send("Blog Created!!"))
     .catch((err) => console.log(err));
 };
+const blog_update = (req, res) => {
+  // console.log(req);
+  const data = { ...req.body, user_id: req.user_id, author: req.author };
+  // console.log(data);
+Blog
+    .updateOne({_id:req.params.id},data)
+    .then(() => res.send("Blog Updated!!"))
+    .catch((err) => console.log(err));
+};
 
 const blog_delete = (req, response) => {
   Blog.findOneAndDelete({_id:req.params.id,user_id:req.user_id})
@@ -40,4 +49,5 @@ module.exports = {
   blog_view_all,
   blog_view_one,
   blog_view_author,
+  blog_update
 };

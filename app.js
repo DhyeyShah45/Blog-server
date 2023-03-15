@@ -23,5 +23,5 @@ app.use('/',blogRoutes)
 
 mongoose
   .connect(CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => app.listen(8000, () => console.log("running on port 8000")))
+  .then(() => app.listen(process.env.PORT || 8000, () => console.log("running on port 8000")))
   .catch((err) => console.log(err));
