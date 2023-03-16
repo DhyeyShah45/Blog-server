@@ -11,7 +11,7 @@ const CONNECTION = process.env.MONGO_URL;
 
 // https://youtu.be/PNtFSVU-YTI - video reference for cors error
 app.use(cors({
-  origin:"http://localhost:3000",
+  origin:"https://blog-here.netlify.app/",
 }))
 
 app.use(express.urlencoded({ extended: true }));
