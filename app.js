@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const cors = require('cors')
+const cors = require('cors')
 const blogRoutes = require('./routes/blogRoutes')
 const userRoutes = require('./routes/userRoutes')
 const mongoose = require("mongoose");
@@ -10,9 +10,9 @@ const app = express();
 const CONNECTION = process.env.MONGO_URL;
 
 // https://youtu.be/PNtFSVU-YTI - video reference for cors error
-// app.use(cors({
-//   origin:"http://localhost:3000",
-// }))
+app.use(cors({
+  origin:"http://localhost:3000",
+}))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));
